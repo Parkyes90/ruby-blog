@@ -12,3 +12,4 @@ puts a.empty?
 b = []
 puts b.empty?
 puts a.include?('Test')
+print a.select { |el| el == 'Test' }
