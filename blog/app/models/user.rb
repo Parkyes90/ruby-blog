@@ -10,4 +10,5 @@ class User < ApplicationRecord
             length: { maximum: 105 },
             format: { with: URI::MailTo::EMAIL_REGEXP }
   has_many :articles
+  has_secure_password
 end
