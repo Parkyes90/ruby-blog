@@ -21,8 +21,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit; end
-
   def update
     if @article.update(article_params)
       flash[:notice] = 'Article was updated successfully.'
