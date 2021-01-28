@@ -25,5 +25,8 @@ $(document).on("turbolinks:load", function () {
   $(".message .close").on("click", function () {
     $(this).closest(".message").transition("fade");
   });
+  $("#new_message").bind("ajax:complete", function () {
+    $("#message_body").val("");
+  });
   scrollBottom();
 });
