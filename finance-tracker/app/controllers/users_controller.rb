@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       end
     else
       respond_to do |format|
-        flash.now[:alert] = "Please enter a friend name or email to search"
+        flash.now[:alert] = 'Please enter a friend name or email to search'
         format.js { render partial: 'users/friend_result' }
       end
     end
