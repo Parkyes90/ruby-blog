@@ -23,7 +23,7 @@ class User < ApplicationRecord
   end
 
   def can_track_stock?(ticker_symbol)
-    under_stock_limit? && stock_already_tracked?(ticker_symbol)
+    under_stock_limit? && !stock_already_tracked?(ticker_symbol)
   end
 
   def full_name
@@ -33,11 +33,7 @@ class User < ApplicationRecord
 
   def self.search(param)
     param.strip!
-    to_send_back =
-      (
-        first_name_matches(param) + last_name_matches(param) +
-          email_name_matches(param)
-      ).uniq
+    to_send_back = (first_name_matches(param) + last_name_matches(param) + email_matches(param)).uniq
     return nil unless to_send_back
     to_send_back
   end
@@ -50,7 +46,7 @@ class User < ApplicationRecord
     matches('last_name', param)
   end
 
-  def self.email_name_matches(param)
+  def self.email_matches(param)
     matches('email', param)
   end
 
