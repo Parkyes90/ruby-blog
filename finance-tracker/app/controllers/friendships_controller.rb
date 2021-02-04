@@ -1,5 +1,13 @@
 class FriendshipsController < ApplicationController
-  def create; end
+  def create
+    current_user.friendships.build(friend:User.find(params[:friend]))
+    if current_user.save
+      flash[:notice] = "Following user"
+    else
+      flash[:alert] = "There was something wrong with the tracking request"
+    end
+    redirect_to my_friends_path
+  end
 
   def destroy
     friendship = current_user.friendships.where(friend_id: params[:id]).first
