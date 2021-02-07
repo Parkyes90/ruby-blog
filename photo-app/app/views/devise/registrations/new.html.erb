@@ -2,7 +2,7 @@
 <script lang="javascript">
   Stripe.setPublishableKey("<%= ENV["STRIPE_TEST_PUBLISHER_KEY"] %>")
 </script>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "cc_form") do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { role: "form", class: 'cc_form' }) do |f| %>
   <%= bootstrap_devise_error_messages! %>
 
   <div class="form-group">
